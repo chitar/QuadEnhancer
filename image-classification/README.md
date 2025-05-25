@@ -1,16 +1,20 @@
+
+
+
 ## Dependencies
 
-These codes are modified based on [CVNets](https://github.com/apple/ml-cvnets), so please install the dependencies according to its instructions.
+This code is modified based on [CVNets](https://github.com/apple/ml-cvnets). Please follow the original repository's instructions to install the necessary dependencies.
 
+## Data Preparation
 
-## Data preparation
+- **Pretraining**: The ImageNet-1k dataset should be prepared first, consisting of `train` and `val` directories.
+- **Fine-tuning**: Organize all fine-tuning datasets in the ImageNet format under `$finetuneDataDir`.
 
-- For pretraining, the ImageNet-1k dataset should be prepared first, which consists of `train` and `val` directories.
-- For finetuning, all datasets should be organized as ImageNet format under `$finetuneDataDir`
+## Pretraining on ImageNet-1k
 
-## Pretaining on ImageNet-1k
-first modify the `root_train` and `root_train` paths of all `.yaml` files, then run the following scripts for pretraining
+Before starting pretraining, make sure to modify the `root_train` and `root_val` paths in all `.yaml` files under `./scripts`. Then, run the following scripts for pretraining:
 
+### Pretraining Scripts
 
 ```bash
 sh ./scripts/run_vit-extiny-linear.sh
@@ -21,28 +25,25 @@ sh ./scripts/run_vit-micro-roll.sh
 
 sh ./scripts/run_vit-tiny-linear.sh
 sh ./scripts/run_vit-tiny-roll.sh
-
-
 ```
 
-the results can be found under `./formal_res`
+The results of pretraining can be found under the `./formal_res` directory.
 
+## Fine-tuning
 
+Before starting fine-tuning, modify the `$finetuneDataDir` variable in all `.sh` scripts under the `./scripts/finetune` directory to point to the location of the fine-tuning datasets. Also, ensure that `$setname` corresponds to each fine-tuning dataset.
 
-## Finetuning
-
-first modify the variables `$finetuneDataDir` in all `.sh` scripts under `./scripts/finetune` to be the directory of the finetune datasets, and make sure `$setname` correspinds to each finetuning datasets, then run the following scripts
+### Fine-tuning Scripts
 
 ```bash
-sh ./scripts/finetune/fintune_vit-extiny-linear.sh
-sh ./scripts/finetune/fintune_vit-extiny-roll.sh
+sh ./scripts/finetune/finetune_vit-extiny-linear.sh
+sh ./scripts/finetune/finetune_vit-extiny-roll.sh
 
-sh ./scripts/finetune/fintune_vit-micro-linear.sh
-sh ./scripts/finetune/fintune_vit-micro-roll.sh
+sh ./scripts/finetune/finetune_vit-micro-linear.sh
+sh ./scripts/finetune/finetune_vit-micro-roll.sh
 
-sh ./scripts/finetune/fintune_vit-tiny-linear.sh
-sh ./scripts/finetune/fintune_vit-tiny-roll.sh
-
+sh ./scripts/finetune/finetune_vit-tiny-linear.sh
+sh ./scripts/finetune/finetune_vit-tiny-roll.sh
 ```
 
-the results can be found in `./formal_res/finetuning`
+The results of fine-tuning can be found in the `./formal_res/finetuning` directory.
