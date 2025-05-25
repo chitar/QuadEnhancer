@@ -1,0 +1,2 @@
+
+PYTHONPATH=. cvnets-train --common.config-file scripts/vit-micro-linear.yaml --common.results-loc formal_res --saw_method linear --saw_k 0 > vit-micro-linear.log
