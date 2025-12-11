@@ -16,7 +16,7 @@ QuadEnhancer introduces a novel architectural enhancement that leverages quadrat
 
 ## Usage
 
-We provide a high-performance implementation of `QuadEnhancedLinear` with custom kernel support via **Triton** in `quadratic_enhancer.py`. Below are two methods to integrate QuadEnhancer into your projects.
+We provide a high-performance implementation of `QuadEnhancedLinear` with custom kernel support via **Triton** in [quadratic_enhancer.py](./quadratic_enhancer.py). Below are two methods to integrate QuadEnhancer into your projects.
 
 ### Method 1: Constructing a Model from Scratch
 You can use the `QuadEnhancedLinear` class as a fundamental building block, exactly like `torch.nn.Linear`.
@@ -52,7 +52,7 @@ torch.nn.Linear = QuadEnhancedLinear
 
 ```
 
-## Code of the experiments in the paper.
+## Reproducing Experiments
 
 Experiments for the three tasks have been conducted in the paper. One can follow the instructions in the respective directories for each task to set up and run the experiments.
 - [image classification](./image-classification/README.md)
