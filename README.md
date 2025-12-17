@@ -29,9 +29,9 @@ from quadratic_enhancer import QuadEnhancedLinear
 inp_dim, hid_dim, out_dim = 128, 256, 10
 
 my_model = nn.Sequential(
-    QuadEnhancedLinear(inp_dim, hid_dim, bias=True),
+    QuadEnhancedLinear(inp_dim, hid_dim, bias=True, k=1),
     nn.ReLU(inplace=True),
-    QuadEnhancedLinear(hid_dim, out_dim, bias=True)
+    QuadEnhancedLinear(hid_dim, out_dim, bias=True, k=1)
 )
 
 ```
@@ -44,6 +44,9 @@ If you wish to upgrade an existing codebase or model definition without rewritin
 ```python
 from quadratic_enhancer import QuadEnhancedLinear
 import torch
+
+# set global k
+QuadEnhancedLinear.static_k = 1
 
 # Monkey patch: Redirect Linear to QuadEnhancedLinear globally
 torch.nn.Linear = QuadEnhancedLinear 
